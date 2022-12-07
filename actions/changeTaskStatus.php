@@ -1,14 +1,6 @@
 <?php
 
-require ('../boot.php');
-
-checkAuth();
-
-$pdo = connectDB();
-
-$findTaskQuery = $pdo->prepare('SELECT status FROM tasks WHERE id = :id');
-$findTaskQuery->execute(['id' => $_GET['id']]);
-$task = $findTaskQuery->fetch(PDO::FETCH_ASSOC);
+require ('checkTask.php');
 
 $status = $task['status'] ? 0 : 1;
 
