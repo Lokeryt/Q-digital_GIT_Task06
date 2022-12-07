@@ -2,6 +2,18 @@
 
 require ('../boot.php');
 
+if (!isset($_POST['auth'])) {
+    flash('Error');
+    redirect();
+    die();
+}
+
+if (empty($_POST['login']) || empty($_POST['password'])) {
+    flash('Fill login and password');
+    redirect();
+    die();
+}
+
 $params = [
     'login' => $_POST['login'],
 ];
@@ -18,7 +30,7 @@ if ($query->rowCount()) {
         $_SESSION['user_id'] = $user['id'];
     } else {
         flash('Invalid password');
-        redirect('../index.php');
+        redirect();
         die();
     }
 } else {
