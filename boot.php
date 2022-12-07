@@ -50,6 +50,7 @@ function isAuth() : bool
 function checkAuth()
 {
     if (!isAuth()) {
+        flash('Not authenticated');
         redirect('index.php');
         die();
     }

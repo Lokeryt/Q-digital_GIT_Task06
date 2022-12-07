@@ -2,5 +2,5 @@
 
 require ('../boot.php');
 
-$_SESSION['user_id'] = null;
+unset($_SESSION['user_id']);
 redirect('../index.php');
