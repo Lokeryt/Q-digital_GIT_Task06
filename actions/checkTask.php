@@ -6,6 +6,12 @@ checkAuth();
 
 $pdo = connectDB();
 
+if (!isset($_GET['id'])) {
+    flash("Task id isn't specified");
+    redirect();
+    die();
+}
+
 $findTaskQuery = $pdo->prepare('SELECT * FROM tasks WHERE id = :id');
 $findTaskQuery->execute(['id' => $_GET['id']]);
 
